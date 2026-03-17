@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #080c10;
+  color: #c9d1d9;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e2d3d; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #2a3f55; }
+
+/* ── AI prose ──────────────────────────── */
+.ai-prose { font-size: .72rem; line-height: 1.8; }
+.ai-prose h1 { color:#fff; font-size:.9rem; font-weight:700; margin:1.3em 0 .4em; }
+.ai-prose h2 { color:#00ff9d; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; margin:1.2em 0 .3em; }
+.ai-prose h3 { color:#e2e8f0; font-size:.73rem; font-weight:600; margin:1em 0 .25em; }
+.ai-prose p  { color:#8899aa; margin:.45em 0; }
+.ai-prose li { color:#8899aa; margin:.25em 0; }
+.ai-prose ul, .ai-prose ol { padding-left: 1.4em; }
+.ai-prose strong { color: #fff; }
+.ai-prose a  { color: #00ff9d; text-decoration: underline; text-underline-offset: 2px; }
+.ai-prose code { background:#0d1117; color:#00ff9d; padding:1px 6px; font-size:.68rem; border-radius:3px; border:1px solid rgba(0,255,157,.15); }
+.ai-prose pre  { background:#0a0e13; border:1px solid rgba(255,255,255,.08); padding:.9rem 1rem; font-size:.68rem; overflow-x:auto; border-radius:4px; margin:.7em 0; }
+.ai-prose pre code { background:none; padding:0; border:none; color:#c9d1d9; }
+.ai-prose blockquote { border-left:3px solid #00ff9d; padding-left:.9rem; margin:.7em 0; color:#6b7a8d; font-style:italic; }
+.ai-prose hr { border-color:rgba(255,255,255,.08); margin:1.2em 0; }
+.ai-prose table { width:100%; border-collapse:collapse; font-size:.68rem; margin:.7em 0; }
+.ai-prose th { color:#8899aa; font-weight:600; text-align:left; padding:.35rem .7rem; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03); }
+.ai-prose td { color:#6b7a8d; padding:.35rem .7rem; border:1px solid rgba(255,255,255,.08); }
+
+/* ── Layout helpers ────────────────────── */
+.grid-bg {
+  background-image: linear-gradient(rgba(0,255,157,.022) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,255,157,.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Cards ─────────────────────────────── */
+.glow-card {
+  border: 1px solid rgba(255,255,255,.07);
+  background: #0d1117;
+  transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+.glow-card:hover {
+  border-color: rgba(0,255,157,.3);
+  box-shadow: 0 0 24px rgba(0,255,157,.06);
+}
+
+/* ── Skeleton ──────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #0d1117 25%, #1a2433 50%, #0d1117 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s linear infinite;
+  border-radius: 3px;
+}
+
+/* ── Status badges ─────────────────────── */
+.badge-pending   { background:rgba(250,204,21,.12); color:#fbbf24; border:1px solid rgba(250,204,21,.2); }
+.badge-cloning,
+.badge-parsing,
+.badge-embedding { background:rgba(96,165,250,.12); color:#60a5fa; border:1px solid rgba(96,165,250,.2); }
+.badge-ready     { background:rgba(0,255,157,.1);   color:#00ff9d; border:1px solid rgba(0,255,157,.25); }
+.badge-failed    { background:rgba(248,113,113,.12);color:#f87171; border:1px solid rgba(248,113,113,.2); }
+
+/* ── Buttons ───────────────────────────── */
+.btn-primary {
+  background: #00ff9d;
+  color: #080c10;
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  padding: .58rem 1.3rem;
+  transition: background .15s, transform .1s, box-shadow .15s;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover  { background:#00e88d; box-shadow: 0 0 20px rgba(0,255,157,.3); }
+.btn-primary:active { transform: scale(.97); }
+.btn-primary:disabled { opacity: .38; cursor: not-allowed; box-shadow:none; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.1);
+  color: #8899aa;
+  font-size: .7rem;
+  padding: .45rem 1rem;
+  transition: border-color .15s, color .15s, background .15s;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-ghost:hover { border-color:rgba(0,255,157,.4); color:#00ff9d; background:rgba(0,255,157,.04); }
+.btn-ghost:disabled { opacity:.35; cursor:not-allowed; }
+
+/* ── Input ─────────────────────────────── */
+.input-field {
+  width: 100%;
+  background: #0a0e13;
+  border: 1px solid rgba(255,255,255,.1);
+  color: #fff;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: .75rem;
+  padding: .65rem 1rem;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.input-field::placeholder { color: #2a3441; }
+.input-field:focus { border-color: rgba(0,255,157,.45); box-shadow: 0 0 0 3px rgba(0,255,157,.05); }
+select.input-field option { background: #0d1117; }
+
+/* ── Nav bar ───────────────────────────── */
+.nav-bar {
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(8,12,16,.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* ── Animations ────────────────────────── */
+@keyframes blink   { 0%,100% { opacity:1 } 50% { opacity:0 } }
+@keyframes fadeIn  { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
+@keyframes pulse2  { 0%,100% { opacity:1 } 50% { opacity:.35 } }
+@keyframes shimmer { from { background-position:200% 0 } to { background-position:-200% 0 } }
+@keyframes spin    { to { transform:rotate(360deg) } }
+@keyframes float   { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-6px) } }
+
+.animate-blink   { animation: blink   1s step-end infinite; }
+.animate-fadeIn  { animation: fadeIn  0.5s ease both; }
+.animate-pulse2  { animation: pulse2  2.5s ease infinite; }
+.animate-shimmer { animation: shimmer 1.8s linear infinite; }
+.animate-spin    { animation: spin    1s linear infinite; }
+.animate-float   { animation: float   3s ease-in-out infinite; }
