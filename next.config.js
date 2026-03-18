@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
-    const backend = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-    return [{ source: "/api/:path*", destination: `${backend}/:path*` }];
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`,
+      },
+    ]
   },
-  transpilePackages: ["@monaco-editor/react"],
-};
-module.exports = nextConfig;
+}
+
+module.exports = nextConfig
